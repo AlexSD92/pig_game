@@ -1,0 +1,71 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(45deg, #000000, 50%, #90323d);
+  margin: 0;
+  padding: 0;
+}
+
+#player-board1 {
+  border-radius: 5px 0 0 5px;
+}
+
+#player-board2 {
+  border-radius: 0 5px 5px 0;
+}
+
+#game-container {
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.player-board {
+  background-color: #90323d;
+  height: 50vh;
+  width: 35vw;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #000000;
+}
+
+h3 {
+  color: #000000;
+}
+
+p {
+  color: #d9cab3;
+}
+
+.active {
+  filter: contrast(115%);
+}
+
+#dice {
+  height: 5vw;
+  width: 5vw;
+  border-radius: 2px;
+  top: 40%;
+  display: block;
+  position: absolute;
+  z-index: 1;
+}
+
+.controls-container {
+  width: 100vw;
+}
+
+.controls {
+  display: block;
+  margin: auto;
+}
