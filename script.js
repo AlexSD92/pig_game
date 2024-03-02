@@ -90,6 +90,7 @@ function rollTheDice() {
   diceImage.src = `assets/dice${dice}.png`;
   if (dice === 1) {
     playerBoard1RoundScore.textContent = 0;
+    playerBoard2RoundScore.textContent = 0;
     toggleActivePlayer();
     dice = 0;
   } else {
