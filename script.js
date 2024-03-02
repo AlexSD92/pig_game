@@ -1,4 +1,6 @@
 const diceImage = document.querySelector("#dice");
+const playerBoard1 = document.querySelector("#player-board1");
+const playerBoard2 = document.querySelector("#player-board2");
 const playerBoard1TotalScore = document.querySelector(
   "#player-board1-total-score"
 );
@@ -12,11 +14,33 @@ const playerBoard2RoundScore = document.querySelector(
   "#player-board2-round-score"
 );
 const scoreBoard = document.getElementsByClassName("score-board");
+let activePlayer;
+
+function checkActivePlayer() {
+  if (playerBoard1.classList.contains("active")) {
+    activePlayer = 1;
+  } else {
+    activePlayer = 2;
+  }
+}
+
+function toggleActivePlayer() {
+  if (activePlayer === 1) {
+    activePlayer = 2;
+    playerBoard1.classList.remove("active");
+    playerBoard2.classList.add("active");
+  } else {
+    activePlayer = 1;
+    playerBoard1.classList.add("active");
+    playerBoard2.classList.remove("active");
+  }
+}
 
 function resetGame() {
   for (let i = 0; i < scoreBoard.length; i++) {
     scoreBoard[i].textContent = 0;
   }
+  toggleActivePlayer();
 }
 
 function endTurn() {
@@ -30,6 +54,7 @@ function endTurn() {
   } else {
     playerBoard1TotalScore.textContent = newTotalScore;
   }
+  toggleActivePlayer();
 }
 
 function addScore(score) {
@@ -44,6 +69,7 @@ function rollTheDice() {
   diceImage.src = `assets/dice${dice}.png`;
   if (dice === 1) {
     playerBoard1RoundScore.textContent = 0;
+    toggleActivePlayer();
   } else {
     addScore(dice);
   }
