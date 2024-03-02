@@ -6,6 +6,12 @@ body {
   padding: 0;
 }
 
+.information {
+  margin: 10vh auto 0 auto;
+  width: 75vw;
+  height: 15vh;
+}
+
 #player-board1 {
   border-radius: 5px 0 0 5px;
 }

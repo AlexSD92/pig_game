@@ -14,7 +14,9 @@ const playerBoard2RoundScore = document.querySelector(
   "#player-board2-round-score"
 );
 const scoreBoard = document.getElementsByClassName("score-board");
+const controls = document.getElementsByClassName("controls");
 let activePlayer = 1;
+const information = document.querySelector(".information");
 
 function checkActivePlayer() {
   if (playerBoard1.classList.contains("active")) {
@@ -40,6 +42,9 @@ function resetGame() {
   for (let i = 0; i < scoreBoard.length; i++) {
     scoreBoard[i].textContent = 0;
   }
+  information.textContent = `Player ${activePlayer} has reset the game`;
+  controls[0].disabled = false;
+  controls[1].disabled = false;
   toggleActivePlayer();
 }
 
@@ -52,10 +57,15 @@ function endTurn() {
     if (newTotalScore >= 100) {
       newTotalScore = 100;
       playerBoard1TotalScore.textContent = newTotalScore;
+      information.textContent = `Player ${activePlayer} has won! Reset the game if you want to play again`;
+      controls[0].disabled = true;
+      controls[1].disabled = true;
     } else {
       playerBoard1TotalScore.textContent = newTotalScore;
+      information.textContent = `Player ${activePlayer} has ended their turn with ${pointsToAdd} points`;
+      toggleActivePlayer();
+      information.textContent += `, it's player ${activePlayer}'s turn`;
     }
-    toggleActivePlayer();
   } else {
     currentTotalScore = Number(playerBoard2TotalScore.textContent);
     pointsToAdd = Number(playerBoard2RoundScore.textContent);
@@ -64,10 +74,15 @@ function endTurn() {
     if (newTotalScore >= 100) {
       newTotalScore = 100;
       playerBoard2TotalScore.textContent = newTotalScore;
+      information.textContent = `Player ${activePlayer} has won! Reset the game if you want to play again`;
+      controls[0].disabled = true;
+      controls[1].disabled = true;
     } else {
       playerBoard2TotalScore.textContent = newTotalScore;
+      information.textContent = `Player ${activePlayer} has ended their turn with ${pointsToAdd} points`;
+      toggleActivePlayer();
+      information.textContent += `, it's player ${activePlayer}'s turn`;
     }
-    toggleActivePlayer();
   }
 }
 
@@ -88,10 +103,13 @@ function rollTheDice() {
   let dice = Math.floor(Math.random() * 6) + 1;
   console.log(dice);
   diceImage.src = `assets/dice${dice}.png`;
+  information.textContent = `Player ${activePlayer} rolled a ${dice}`;
   if (dice === 1) {
     playerBoard1RoundScore.textContent = 0;
     playerBoard2RoundScore.textContent = 0;
+    information.textContent = `Player ${activePlayer} rolled a ${dice}`;
     toggleActivePlayer();
+    information.textContent += `, it's player ${activePlayer}'s turn`;
     dice = 0;
   } else {
     addScore(dice);
