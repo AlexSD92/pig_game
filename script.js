@@ -96,3 +96,10 @@ function rollTheDice() {
     addScore(dice);
   }
 }
+
+function toggleRoll() {
+  diceImage.classList.add("roll");
+  setTimeout(() => {
+    diceImage.classList.remove("roll");
+  }, 500);
+}
