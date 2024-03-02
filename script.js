@@ -14,7 +14,7 @@ const playerBoard2RoundScore = document.querySelector(
   "#player-board2-round-score"
 );
 const scoreBoard = document.getElementsByClassName("score-board");
-let activePlayer;
+let activePlayer = 1;
 
 function checkActivePlayer() {
   if (playerBoard1.classList.contains("active")) {
@@ -44,23 +44,44 @@ function resetGame() {
 }
 
 function endTurn() {
-  currentTotalScore = Number(playerBoard1TotalScore.textContent);
-  pointsToAdd = Number(playerBoard1RoundScore.textContent);
-  newTotalScore = currentTotalScore + pointsToAdd;
-  playerBoard1RoundScore.textContent = 0;
-  if (newTotalScore >= 100) {
-    newTotalScore = 100;
-    playerBoard1TotalScore.textContent = newTotalScore;
+  if (activePlayer === 1) {
+    currentTotalScore = Number(playerBoard1TotalScore.textContent);
+    pointsToAdd = Number(playerBoard1RoundScore.textContent);
+    newTotalScore = currentTotalScore + pointsToAdd;
+    playerBoard1RoundScore.textContent = 0;
+    if (newTotalScore >= 100) {
+      newTotalScore = 100;
+      playerBoard1TotalScore.textContent = newTotalScore;
+    } else {
+      playerBoard1TotalScore.textContent = newTotalScore;
+    }
+    toggleActivePlayer();
   } else {
-    playerBoard1TotalScore.textContent = newTotalScore;
+    currentTotalScore = Number(playerBoard2TotalScore.textContent);
+    pointsToAdd = Number(playerBoard2RoundScore.textContent);
+    newTotalScore = currentTotalScore + pointsToAdd;
+    playerBoard2RoundScore.textContent = 0;
+    if (newTotalScore >= 100) {
+      newTotalScore = 100;
+      playerBoard2TotalScore.textContent = newTotalScore;
+    } else {
+      playerBoard2TotalScore.textContent = newTotalScore;
+    }
+    toggleActivePlayer();
   }
-  toggleActivePlayer();
 }
 
 function addScore(score) {
-  currentScore = Number(playerBoard1RoundScore.textContent);
-  newScore = currentScore + score;
-  playerBoard1RoundScore.textContent = newScore;
+  let newScore;
+  if (activePlayer === 1) {
+    currentScore = Number(playerBoard1RoundScore.textContent);
+    newScore = currentScore + score;
+    playerBoard1RoundScore.textContent = newScore;
+  } else {
+    currentScore = Number(playerBoard2RoundScore.textContent);
+    newScore = currentScore + score;
+    playerBoard2RoundScore.textContent = newScore;
+  }
 }
 
 function rollTheDice() {
@@ -70,6 +91,7 @@ function rollTheDice() {
   if (dice === 1) {
     playerBoard1RoundScore.textContent = 0;
     toggleActivePlayer();
+    dice = 0;
   } else {
     addScore(dice);
   }
