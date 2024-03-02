@@ -29,7 +29,10 @@ body {
   width: 35vw;
   margin: 0;
   padding: 0;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h2 {
@@ -41,10 +44,12 @@ h2 {
 
 h3 {
   color: #000000;
+  text-align: center;
 }
 
 p {
   color: #d9cab3;
+  text-align: center;
 }
 
 .active {
