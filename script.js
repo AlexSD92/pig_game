@@ -22,5 +22,9 @@ function rollTheDice() {
   let dice = Math.floor(Math.random() * 6) + 1;
   console.log(dice);
   diceImage.src = `assets/dice${dice}.png`;
-  addScore(dice);
+  if (dice === 1) {
+    playerBoard1RoundScore.textContent = 0;
+  } else {
+    addScore(dice);
+  }
 }
