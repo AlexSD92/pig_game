@@ -11,16 +11,16 @@
       <div id="player-board1" class="player-board active">
         <h2 class="player-board1-heading">Player 1</h2>
         <h3>Total Score</h3>
-        <p id="player-board1-total-score">0</p>
+        <p id="player-board1-total-score" class="score-board">0</p>
         <h3>Round Score</h3>
-        <p id="player-board1-round-score">0</p>
+        <p id="player-board1-round-score" class="score-board">0</p>
       </div>
       <div id="player-board2" class="player-board">
         <h2 class="player-board2-heading">Player 2</h2>
         <h3>Total Score</h3>
-        <p id="player-board2-total-score">0</p>
+        <p id="player-board2-total-score" class="score-board">0</p>
         <h3>Round Score</h3>
-        <p id="player-board2-round-score">0</p>
+        <p id="player-board2-round-score" class="score-board">0</p>
       </div>
       <img id="dice" src="assets/dice1.png" alt="dice" />
     </div>
@@ -39,7 +39,12 @@
         onclick="endTurn()"
       />
       <br />
-      <input type="button" class="controls" value="Reset" />
+      <input
+        type="button"
+        class="controls"
+        value="Reset"
+        onclick="resetGame()"
+      />
       <br />
     </div>
     <script src="script.js"></script>

@@ -11,6 +11,13 @@ const playerBoard1RoundScore = document.querySelector(
 const playerBoard2RoundScore = document.querySelector(
   "#player-board2-round-score"
 );
+const scoreBoard = document.getElementsByClassName("score-board");
+
+function resetGame() {
+  for (let i = 0; i < scoreBoard.length; i++) {
+    scoreBoard[i].textContent = 0;
+  }
+}
 
 function endTurn() {
   currentTotalScore = Number(playerBoard1TotalScore.textContent);
