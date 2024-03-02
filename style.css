@@ -1,7 +1,7 @@
 body {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(45deg, #000000, 50%, #90323d);
+  background: linear-gradient(45deg, #000000, #90323d);
   margin: 0;
   padding: 0;
 }
@@ -10,6 +10,7 @@ body {
   margin: 10vh auto 0 auto;
   width: 75vw;
   height: 15vh;
+  font-size: 1rem;
 }
 
 #player-board1 {
@@ -46,7 +47,9 @@ h2 {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #000000;
+  color: #d9cab3;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 h3 {
@@ -57,10 +60,21 @@ h3 {
 p {
   color: #d9cab3;
   text-align: center;
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
 }
 
 .active {
   filter: contrast(115%);
+}
+
+.dice-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 5vh;
 }
 
 #dice {
@@ -137,6 +151,13 @@ p {
   #dice {
     height: 10vw;
     width: 10vw;
-    top: 40%;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
   }
 }
